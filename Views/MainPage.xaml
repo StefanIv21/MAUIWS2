@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MauiWS2.Models"
+             x:Class="MauiWS2.Views.MainPage">
+
+
+    <VerticalStackLayout Padding="10">
+
+        <Grid ColumnDefinitions="*, 40, 40,40">
+
+            <Label
+            Text="Good Afternoon"
+            FontSize="20"
+            FontAttributes="Bold"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            
+            <Label
+            Grid.Column="1"
+            Text="bell"
+            FontFamily="FAR"
+            FontSize="20"
+            FontAttributes="Bold"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+            <Label
+            Grid.Column="2"
+            Text="clock"
+            FontFamily="FAR"
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+            <Label
+            Grid.Column="3"
+            Text="gear"
+            FontFamily="FAS"
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </Grid>
+
+
+        <Grid ColumnDefinitions="85, 200">
+            <Border StrokeShape="RoundRectangle 20,20,20,20"
+                      Margin="5"
+                    >
+              <Label
+                Text="Music"
+                FontSize="20"
+               
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />       
+            </Border>
+
+
+            <Border
+                StrokeShape="RoundRectangle 20,20,20,20"
+                Grid.Column="1"
+                 Margin="5">
+                <Label
+                Grid.Column="1"
+              
+                Text="Podcasts &amp; Shows"
+                FontSize="20"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            </Border>
+        </Grid>
+
+        <CollectionView>
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type model:SpotifyModel}">
+                    <model:SpotifyModel Name="Liked Songs"
+                                      Image="cover.jpeg" />
+                    <model:SpotifyModel Name="Discover Weekly"
+                                      Image="cover1.jpg" />
+                    <model:SpotifyModel Name="Your top Songs"
+                                      Image="cover2.jpg" />
+                    <model:SpotifyModel Name="Daily mix 1"
+                                      Image="cover3.png" />
+                    <model:SpotifyModel Name="Daily mix 2"
+                                      Image="cover4.jpg" />
+                    <model:SpotifyModel Name="Zonga music"
+                                      Image="cover5.jpeg" />
+                </x:Array>
+            </CollectionView.ItemsSource>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border StrokeShape="RoundRectangle 5,5,5,5"
+                            StrokeThickness="0"
+                            Padding="0"
+                            BackgroundColor="#535353">
+                        <Grid ColumnDefinitions="auto, *"
+                          RowDefinitions="*, *"
+                          BackgroundColor="#535353">
+
+                            <Image Grid.RowSpan="2"
+                               Source="{Binding Image}"
+                               HeightRequest="66"
+                               WidthRequest="66" />
+
+                            <Label Text="{Binding Name}"
+                               Grid.RowSpan="2"
+                               Grid.Column="1"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontAttributes="Bold"
+                               FontSize="20"/>
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2" 
+                                 VerticalItemSpacing="10"
+                                 HorizontalItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
+        </CollectionView>
+
+        <Grid RowDefinitions="*, *"
+              ColumnDefinitions="auto, *"
+              ColumnSpacing="15">
+            <Image Grid.RowSpan="2"
+                   Source="artist.jpeg"
+                   WidthRequest="80"
+                   HeightRequest="80" >
+                <Image.Clip>
+                    <EllipseGeometry RadiusX="40"
+                                     RadiusY="40"
+                                     Center="40, 40" />
+                </Image.Clip>
+            </Image>
+            <Label Text="MORE LIKE"
+                  
+                   TextColor="#919191"
+               
+                   FontSize="12"
+                   Grid.Column="1" />
+            <Label Text="Bon Jovi"
+                   FontAttributes="Bold"
+                   FontSize="35"
+                   VerticalTextAlignment="Center"
+                   Grid.Column="1"
+                   Grid.RowSpan="2"/>
+        </Grid>
+    </VerticalStackLayout>
+
+</ContentPage>
